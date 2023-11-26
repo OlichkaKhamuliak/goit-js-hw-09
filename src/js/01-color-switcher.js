@@ -7,33 +7,35 @@ const btnStop = document.querySelector('[data-stop]');
 const body = document.body;
 
 let intervalId;
-let isStarted = false; // Початковий стан: не розпочато
+btnStop.disabled = true;
+
+function randomChangeBackGround() {
+    body.style.backgroundColor = getRandomHexColor();   
+}
 
 btnStart.addEventListener('click', onStartClick);
 btnStop.addEventListener('click', onStopClick);
 
 function onStartClick() {
-  if (!isStarted) {
-    changeBackGround();
+    randomChangeBackGround();
     btnStart.disabled = true;
     btnStop.disabled = false;
-    isStarted = true;
     intervalId = setInterval(() => {
-      changeBackGround();
+      randomChangeBackGround();
     }, 1000);
-  }
 }
 
 function onStopClick() {
-  if (isStarted) {
     clearInterval(intervalId);
     btnStart.disabled = false;
     btnStop.disabled = true;
-    isStarted = false;
-  } else {
-    alert("Спочатку натисніть кнопку 'Start'");
-  }
 }
+
+/**
+  |============================
+  | ІНШИЙ МЕТОД
+  |============================
+*/
 
 // btnStart.addEventListener('click', onActiveBtn)
 // btnStop.addEventListener('click', onActiveBtn)
@@ -46,21 +48,15 @@ function onStopClick() {
 //     const clickedButton = evt.target;
 
 //     if (clickedButton.matches('[data-start]')) {
-//         changeBackGround()
+//         randomChangeBackGround()
 //         clickedButton.disabled = true;
 //         btnStop.disabled = false;
 //         intervalId = setInterval(() => {
-//             changeBackGround();
+//             randomChangeBackGround();
 //         }, 1000);
 //     } else if (clickedButton.matches('[data-stop]')) {
 //         clickedButton.disabled = true; 
-//         if (intervalId) {
-//             btnStart.disabled = false;
-//             clearInterval(intervalId);
-//         }
+//         btnStart.disabled = false;
+//         clearInterval(intervalId);
 //     }
 // }
-
-function changeBackGround() {
-    body.style.backgroundColor = getRandomHexColor();   
-}
