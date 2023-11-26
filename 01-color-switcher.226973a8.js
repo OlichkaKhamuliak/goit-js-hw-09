@@ -1,2 +1,0 @@
-!function(){var t,e=document.querySelector("[data-start]"),a=document.querySelector("[data-stop]"),n=document.body,d=!1;function o(){n.style.backgroundColor="#".concat(Math.floor(16777215*Math.random()).toString(16).padStart(6,0))}e.addEventListener("click",(function(){d||(o(),e.disabled=!0,a.disabled=!1,d=!0,t=setInterval((function(){o()}),1e3))})),a.addEventListener("click",(function(){d?(clearInterval(t),e.disabled=!1,a.disabled=!0,d=!1):alert("Спочатку натисніть кнопку 'Start'")}))}();
-//# sourceMappingURL=01-color-switcher.226973a8.js.map
